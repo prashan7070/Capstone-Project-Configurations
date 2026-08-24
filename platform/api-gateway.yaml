@@ -1,0 +1,33 @@
+spring:
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: student-service
+              uri: lb://STUDENT-SERVICE
+              predicates:
+                - Path=/api/v1/students/**
+
+            - id: program-service
+              uri: lb://PROGRAM-SERVICE
+              predicates:
+                - Path=/api/v1/programs/**
+
+            - id: enrollment-service
+              uri: lb://ENROLLMENT-SERVICE
+              predicates:
+                - Path=/api/v1/enrollments/**
+
+          default-filters:
+            - PreserveHostHeader
+
+          globalcors:
+            cors-configurations:
+              '[/**]':
+                allowedOrigins: "*"
+                allowed-methods: "*"
+                allowed-headers: "*"
+server:
+  port: 7000

@@ -1,0 +1,14 @@
+spring:
+  mvc:
+    problemdetails:
+      enabled: true
+
+  mongodb:
+    uri: mongodb://root:PFTJ7CSaSnecwCu06BKvvY3BNLemBpDHsk2su7SQnTg0Yr7v@5c939bc5-edf0-4b04-acd6-8548990e74e9.asia-southeast1.firestore.goog:443/db-capstone?loadBalanced=true&tls=true&authMechanism=SCRAM-SHA-256&retryWrites=false
+
+server:
+  port: 0
+
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
